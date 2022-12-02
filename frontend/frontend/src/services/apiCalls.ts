@@ -1,21 +1,20 @@
 import axios from "axios";
-
 //URLS para probar servidor local. Reemplazar localBackendUrl con la direccion del api local
 
-const localBackendUrl = "http://localhost:4000";
-const usersUrl = localBackendUrl + "/user/list";
-const postsUrl = localBackendUrl + "/post/list/";
-const albumsUrl = localBackendUrl + "/album/list/";
-const photosUrl = localBackendUrl + "/photo/list/";
-const logsUrl = localBackendUrl + "/logs";
+// const localBackendUrl = "http://localhost:4000";
+// const usersUrl = localBackendUrl + "/user/list";
+// const postsUrl = localBackendUrl + "/post/list/";
+// const albumsUrl = localBackendUrl + "/album/list/";
+// const photosUrl = localBackendUrl + "/photo/list/";
+// const logsUrl = localBackendUrl + "/logs";
 
-//URlS para probar directamente al api de jsonplaceholder
 
-// const usersUrl = "https://jsonplaceholder.typicode.com/users";
-// const postsUrl = "https://jsonplaceholder.typicode.com/posts?userId="
-// const albumsUrl = "https://jsonplaceholder.typicode.com/albums?userId=";
-// const photosUrl = "https://jsonplaceholder.typicode.com/photos?albumId=";
-//const logsUrl = localBackendUrl + "";
+//URlS para probar directamente al api de jsonplaceholder y logs locales
+const usersUrl = "https://jsonplaceholder.typicode.com/users";
+const postsUrl = "https://jsonplaceholder.typicode.com/posts?userId="
+const albumsUrl = "https://jsonplaceholder.typicode.com/albums?userId=";
+const photosUrl = "https://jsonplaceholder.typicode.com/photos?albumId=";
+const logsUrl = "logs.json";
 
 const fetchUsers = async () => {
   try {
@@ -55,6 +54,7 @@ const fetchAlbumPhotos = async (albumId: String) => {
 
 const fetchLogs = async () => {
   try {
+    console.log(logsUrl);
     const result = await axios.get(logsUrl);
     return result.data;
   } catch (e) {
